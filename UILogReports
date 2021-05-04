@@ -1,0 +1,5 @@
+2021-04-30 11:27:08 INFO  WebDriverManager:606 - Using msedgedriver 90.0.818.51 (resolved driver for Edge 90)
+2021-04-30 11:27:08 INFO  WebDriverManager:662 - Exporting webdriver.edge.driver as C:\Users\Gunasekhar.P\.cache\selenium\msedgedriver\win64\90.0.818.51\msedgedriver.exe
+2021-04-30 11:27:50 INFO  CommonFunctions:158 - https://rahulshettyacademy.com/AutomationPractice/
+2021-04-30 11:28:00 INFO  CommonFunctions:210 - Inside captureScreenShot Utility
+2021-04-30 11:28:02 INFO  CommonFunctions:185 - All the browser instances are closed

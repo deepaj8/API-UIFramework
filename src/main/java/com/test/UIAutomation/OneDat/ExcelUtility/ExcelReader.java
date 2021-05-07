@@ -32,48 +32,26 @@ public class ExcelReader extends testBase {
 
 		return data;
 		
-	}
-	/*public void writeData(String fileName,String sheetName,HashMap<String,List<String>> data) throws FilloException 
-	{
-		connection=GetCount.makeFilloConnection(fileName);
-		for(String colName:data.keySet())
-		{
-			List<String> listColValues=data.get(colName);
-			for(String colValues:listColValues)
-			{
-				String query="Insert into "+ sheetName+"("+colName+") values('"+colValues+"')";
-				connection.executeUpdate(query);
-			}
-		}
-		connection.close();
-	}*/
+	}	
 	
-//below method is useful to store the data in two dimensional array	
-/*     public Object[][] getData(String fileName,String sheetName,String query)
-	 {
-	 Object[][] data=null;
-	 log.info("Excel File Name is---"+fileName);
-	// GetCount.makeFilloConnection("Login");
+//get data from all the columns based on row number	
+	public HashMap<String,String> getDataFromRow(String fileName,String sheetName,int testcaseid ) throws FilloException
+	{
+		HashMap<String,String> hm=new HashMap<String,String>();
+		GetCount.makeFilloConnection(fileName);
+		String query="select * from "+sheetName+" where testcaseid="+testcaseid+"";
 		GetCount gc=new GetCount();
-		int rows=gc.getRowsCount(fileName,sheetName);
-		System.out.println(rows);
-		int columns=gc.getColumnsCount(fileName,sheetName);
-		System.out.println(columns);
-		 data=new Object[rows][columns];
+		int columns=gc.getColumnsCount(fileName, sheetName);
 		Recordset rs=gc.exeQuery(fileName,query);
-		for(int i=0;i<rows;i++)
+		rs.moveNext();
+		for(int i=0;i<columns;i++)
 		{
-			rs.moveNext();
-			for(int j=0;j<columns;j++)
-			{
-				data[i][j]=rs.getField(rs.getFieldNames().get(j));
-			}
+			
+			hm.put(rs.getFieldNames().get(i),rs.getField(rs.getFieldNames().get(i)));
 		}
 		rs.close();
-		return data;
-		}
-		
-*/
+		return hm;
+	}
 
 	
 /*	public Object[][] getDataFromCell(String sheetName, String testcaseName) throws FilloException {

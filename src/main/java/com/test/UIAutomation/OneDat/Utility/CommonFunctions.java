@@ -3,7 +3,9 @@ package com.test.UIAutomation.OneDat.Utility;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Calendar;
@@ -32,6 +34,13 @@ import com.test.UIAutomation.OneDat.ExcelUtility.GetCount;
 import com.test.UIAutomation.OneDat.PageObjectManager.PageObjectManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 public class CommonFunctions {
 	protected final Logger log = Logger.getLogger(CommonFunctions.class.getName());
@@ -56,8 +65,8 @@ public class CommonFunctions {
 	public static PageObjectManager pomanager;
 	public static StringActions stringHandler;
 	public static MouseActions mouseHandler;
-	//public static ThreadLocal<WebDriver> driver=new ThreadLocal<WebDriver>();
-
+	public static RequestSpecification req;
+	
 /****loads the requested data from the property file and returns the value*****/
 	public String loadData(String configVal) {
 		prop = new Properties();
@@ -82,35 +91,7 @@ public class CommonFunctions {
 	
 
 /*****Select Browser*****/
-/*	public  void selectBrowser(String browser)
-	{
-		if (browser.equalsIgnoreCase("chrome")) {
-			WebDriverManager.chromedriver().setup();
-			if (loadData("disablecookie").equalsIgnoreCase("yes")) {
-				driver.set( new ChromeDriver(cookieHandler.disablecookieOnChrome()));
-			} else {
-				driver.set(new ChromeDriver());
-			}
-		} else if (browser.equalsIgnoreCase("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			if (loadData("disablecookie").equalsIgnoreCase("yes")) {
-				driver.set(new FirefoxDriver(cookieHandler.disableCookieOnFirefox()));
-			} else {
-				driver.set(new FirefoxDriver());
-			}
-		} else if (browser.equalsIgnoreCase("edge")) {
-			WebDriverManager.edgedriver().setup();
-			driver.set(new EdgeDriver());
-		} else if (browser.equalsIgnoreCase("ie")) {
-			WebDriverManager.iedriver().setup();
-			driver.set(new InternetExplorerDriver());
-		}
-		//setDriver(getDriver());
-	}
-	public static WebDriver getDriver()
-	{
-		return driver.get();
-	}*/
+	
 	public void selectBrowser(String browser) {
 		if (browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
@@ -291,4 +272,44 @@ public class CommonFunctions {
 			file.delete();
 		}
 	}
+	
+	//common functions for api's
+	
+	/****request specification for place api's ****/
+	public RequestSpecification requestSpecifications() throws IOException {
+		if(req==null)
+		{
+		PrintStream log=new PrintStream(new FileOutputStream("APILogReports.txt"));
+		req =new RequestSpecBuilder().setBaseUri(loadData("baseUri")).addQueryParam("key", loadData("queryParam"))
+				.addFilter(RequestLoggingFilter.logRequestTo(log))
+				.addFilter(ResponseLoggingFilter.logResponseTo(log))
+				.setContentType(ContentType.JSON).build();
+		return req;
+		}
+		return req;
+	}
+	
+	/****request specification for library api's ****/
+	public RequestSpecification requestSpecForLibrary() throws IOException {
+		if(req==null)
+		{
+		PrintStream log=new PrintStream(new FileOutputStream("APILogReports.txt"));
+		req =new RequestSpecBuilder().setBaseUri(loadData("baseUri"))
+				.addFilter(RequestLoggingFilter.logRequestTo(log))
+				.addFilter(ResponseLoggingFilter.logResponseTo(log))
+				.setContentType(ContentType.JSON).build();
+		return req;
+		}
+		return req;
+	}
+	
+	/****get the string value from the response based on the json key****/
+	public String getJsonPath(Response response,String key)
+	{
+		String s=response.asString();
+		JsonPath js=new JsonPath(s);
+		return js.get(key).toString();
+	}
+	
+	
 }

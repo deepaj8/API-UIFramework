@@ -1,8 +1,6 @@
 package com.test.APIAutomation.OneDat.StepDefinitions;
 
 import io.cucumber.java.en.And;
-
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,29 +12,39 @@ import io.restassured.specification.ResponseSpecification;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 import java.io.IOException;
+import java.util.HashMap;
 
+import com.codoid.products.exception.FilloException;
 import com.test.APIAutomation.OneDat.Resources.ApiResources;
-import com.test.APIAutomation.OneDat.Resources.CommonUtils;
 import com.test.APIAutomation.OneDat.Resources.TestBuild;
+import com.test.UIAutomation.OneDat.ExcelUtility.ExcelReader;
+import com.test.UIAutomation.OneDat.Utility.CommonFunctions;
 
-public class StepDefinition extends CommonUtils {
+public class StepDefinition extends CommonFunctions {
 	RequestSpecification res;
 	ResponseSpecification resspec;
 	Response response;
 	TestBuild data=new TestBuild();
+	static String place_id;
+	static String id;
 	
-	@Given("Add place payload")
-	public void add_place_payload() throws IOException {
+	@Given("Add payload with {string} {string} {string}")
+	public void add_payload_with(String name, String language, String address) throws IOException {
 		 res=given().spec(requestSpecifications())
-		.body(data.addPlacePayload());
+					.body(data.addPlacePayload(name,language,address));
 	}
-	
-	@When("user calls {string} with post http request")
-	public void user_calls_with_post_http_request(String resource) {
+	@When("user calls {string} with {string} http request")
+	public void user_calls_with_http_request(String resource, String method) {
 		ApiResources resourceApi=ApiResources.valueOf(resource);
 		resspec =new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
-	   response=res.when().post(resourceApi.getResource()).
-		then().spec(resspec).extract().response();
+		if(method.equalsIgnoreCase("POST"))
+		{
+	   response=res.when().post(resourceApi.getResource());
+		}
+		else if(method.equalsIgnoreCase("GET"))
+		{
+			 response=res.when().get(resourceApi.getResource());	
+		}
 	}
 	
 	@Then("the Api call is success with status code {int}")
@@ -48,6 +56,67 @@ public class StepDefinition extends CommonUtils {
 	public void is_response_body_is(String key, String expected) {
 		assertEquals(getJsonPath(response,key),expected);
 	}
+	
+	@Then("verify expected name in {string} is {string} using {string}")
+	public void verify_expected_name_using(String apis,String expectedName, String resource) throws IOException {
+		if(apis.equalsIgnoreCase("places"))
+		{
+		place_id=getJsonPath(response,"place_id");
+		 res=given().spec(requestSpecifications()).queryParam("place_id",place_id);
+		 user_calls_with_http_request(resource,"GET");
+		  String actualName=getJsonPath(response,"name");
+		  assertEquals(actualName,expectedName); 
+		}
+		else if(apis.equalsIgnoreCase("books"))
+		{
+			id=getJsonPath(response,"ID");
+			res=given().spec(requestSpecForLibrary()).queryParam("ID",id);
+			user_calls_with_http_request(resource,"GET");
+			String actualName=getJsonPath(response,"[0].book_name");
+			  assertEquals(actualName,expectedName); 
+		}
+	}
+	
+    @Given("Delete payload for {string}")
+    public void delete_payload_for(String apis) throws IOException {
+		if(apis.equalsIgnoreCase("places"))
+		{
+    	res =given().spec(requestSpecifications()).body(data.deleteAPIPayload(place_id));
+		}
+		else if(apis.equalsIgnoreCase("books"))
+		{
+			res =given().spec(requestSpecForLibrary()).body(data.deleteBookPayLoad(id));
+		}
+    }
+    
+    @Given("Add book payload with {string} {string} {int} {string}")
+    public void add_book_payload_with(String name, String isbn, Integer aisle, String author) throws IOException {
+    	
+    	res=given().spec(requestSpecForLibrary())
+				.body(data.addBookPayLoad(name, isbn,aisle,author));
+    }
 
+    @Given("Add book payload with {string} {int}")
+    public void add_book_payload_with(String sheetname,Integer testcaseid) throws FilloException, IOException
+    {
+    	ExcelReader er=new ExcelReader();
+		HashMap<String,String> hm=er.getDataFromRow("Library",sheetname,testcaseid);
+		String name=hm.get("name");
+		String isbn=hm.get("isbn");
+		Integer aisle=Integer.valueOf(hm.get("aisle"));
+		String author=hm.get("author");
+		res=given().spec(requestSpecForLibrary())
+				.body(data.addBookPayLoad(name, isbn,aisle,author));	
+    }
+
+ 
+    @And("delete the book with {string} resource")
+    public void delete_the_book_with_resource(String resource) throws IOException
+    {
+    	id=getJsonPath(response,"ID");
+    	res =given().spec(requestSpecForLibrary()).body(data.deleteBookPayLoad(id));
+    	ApiResources resourceApi=ApiResources.valueOf(resource);
+    	res.when().post(resourceApi.getResource());
+    }
 
 }

@@ -3,15 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.test.automation.OneDat.TestCases.OneDat_TC3">
+      <class name="com.test.APIAutomation.OneDat.RunnerClasses.AddMultipleBooks">
         <methods>
-          <include name="startTest"/>
-          <include name="AfterMethod"/>
-          <include name="onedat_navigateTo_interactions"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
+          <include name="runScenario" invocation-numbers="0 1 2 3"/>
+          <include name="tearDownClass"/>
+          <include name="setUpClass"/>
         </methods>
-      </class> <!-- com.test.automation.OneDat.TestCases.OneDat_TC3 -->
+      </class> <!-- com.test.APIAutomation.OneDat.RunnerClasses.AddMultipleBooks -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

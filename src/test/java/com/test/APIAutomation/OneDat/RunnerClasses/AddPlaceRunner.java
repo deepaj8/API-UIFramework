@@ -4,11 +4,9 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-features="src/test/java/com/test/APIAutomation/OneDat/FeatureFiles",
+features="src/test/java/com/test/APIAutomation/OneDat/FeatureFiles/placeValidation.feature",
 glue={"classpath:com/test/APIAutomation/OneDat/StepDefinitions"},
 monochrome=true)
-
-
 
 public class AddPlaceRunner extends AbstractTestNGCucumberTests{
 

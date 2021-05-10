@@ -273,9 +273,12 @@ public class CommonFunctions {
 		}
 	}
 	
-	//common functions for api's
 	
-	/****request specification for place api's ****/
+	
+/******************COMMON FUNCTIONS FOR API TESTING *************************/
+	
+	
+	/****Request specification for place api's ****/
 	public RequestSpecification requestSpecifications() throws IOException {
 		if(req==null)
 		{
@@ -289,7 +292,7 @@ public class CommonFunctions {
 		return req;
 	}
 	
-	/****request specification for library api's ****/
+	/****Request specification for library api's ****/
 	public RequestSpecification requestSpecForLibrary() throws IOException {
 		if(req==null)
 		{

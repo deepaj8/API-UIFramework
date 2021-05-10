@@ -37,6 +37,35 @@
          </suiteXmlFiles>
          </configuration>
        </plugin> 
+       
+        <plugin>
+    <groupId>net.masterthought</groupId>
+    <artifactId>maven-cucumber-reporting</artifactId>
+    <version>5.3.0</version>
+    <executions>
+        <execution>
+            <id>execution</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>generate</goal>
+            </goals>
+            <configuration>
+               <projectName>CucumberFramework</projectName>
+                   <outputDirectory>target/advanced-reports</outputDirectory>
+                   <inputDirectory>target</inputDirectory>
+                  <jsonFiles>
+                     <param>**/*.json</param>
+                  </jsonFiles>
+                   <enableFlashCharts>true</enableFlashCharts>
+      <!-- Below tag should be there & we should set to false otherwise we get build failure through maven-->
+                   <checkBuildResult>false</checkBuildResult>
+                   <parallelTesting>false</parallelTesting>
+                   <buildNumber>40</buildNumber>
+                  </configuration>
+        </execution>
+    </executions>
+</plugin>
+       
         </plugins>
         </pluginManagement>
  </build>

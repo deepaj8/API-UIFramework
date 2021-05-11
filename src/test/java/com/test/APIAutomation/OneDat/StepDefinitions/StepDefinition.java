@@ -54,25 +54,25 @@ public class StepDefinition extends CommonFunctions {
 	
 	@And("{string} in response body is {string}")
 	public void is_response_body_is(String key, String expected) {
-		assertEquals(getJsonPath(response,key),expected);
+		assertEquals(getStringFromJson(response,key),expected);
 	}
 	
 	@Then("verify expected name in {string} is {string} using {string}")
 	public void verify_expected_name_using(String apis,String expectedName, String resource) throws IOException {
 		if(apis.equalsIgnoreCase("places"))
 		{
-		place_id=getJsonPath(response,"place_id");
+		place_id=getStringFromJson(response,"place_id");
 		 res=given().spec(requestSpecifications()).queryParam("place_id",place_id);
 		 user_calls_with_http_request(resource,"GET");
-		  String actualName=getJsonPath(response,"name");
+		  String actualName=getStringFromJson(response,"name");
 		  assertEquals(actualName,expectedName); 
 		}
 		else if(apis.equalsIgnoreCase("books"))
 		{
-			id=getJsonPath(response,"ID");
+			id=getStringFromJson(response,"ID");
 			res=given().spec(requestSpecForLibrary()).queryParam("ID",id);
 			user_calls_with_http_request(resource,"GET");
-			String actualName=getJsonPath(response,"[0].book_name");
+			String actualName=getStringFromJson(response,"[0].book_name");
 			  assertEquals(actualName,expectedName); 
 		}
 	}
@@ -113,7 +113,7 @@ public class StepDefinition extends CommonFunctions {
     @And("delete the book with {string} resource")
     public void delete_the_book_with_resource(String resource) throws IOException
     {
-    	id=getJsonPath(response,"ID");
+    	id=getStringFromJson(response,"ID");
     	res =given().spec(requestSpecForLibrary()).body(data.deleteBookPayLoad(id));
     	ApiResources resourceApi=ApiResources.valueOf(resource);
     	res.when().post(resourceApi.getResource());

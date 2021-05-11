@@ -328,6 +328,13 @@ public class CommonFunctions {
 		return getJsonPath(response).getInt(key);
 	}
 	
+	/****get the double value from the response based on the json key****/
+	public double getBooleanFromJson(Response response,String key)
+	{
+		return getJsonPath(response).getDouble(key);
+	}
+	
+	
 	/****convert static json file to string****/
 	public String readJsonFile(String fileName) throws IOException
 	{

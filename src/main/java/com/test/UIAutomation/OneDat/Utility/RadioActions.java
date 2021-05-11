@@ -2,7 +2,7 @@ package com.test.UIAutomation.OneDat.Utility;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebElement;
 
 import com.test.UIAutomation.OneDat.TestBase.testBase;

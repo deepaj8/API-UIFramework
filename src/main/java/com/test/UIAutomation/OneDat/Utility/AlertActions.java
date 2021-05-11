@@ -1,12 +1,6 @@
 package com.test.UIAutomation.OneDat.Utility;
 
-import java.io.File;
-import java.time.Duration;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.test.UIAutomation.OneDat.TestBase.testBase;
 

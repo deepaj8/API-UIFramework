@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import com.test.UIAutomation.OneDat.Pages.OneDatElements;
 import com.test.UIAutomation.OneDat.Pages.OneDatPortal;
 import com.test.UIAutomation.OneDat.TestBase.testBase;
-import com.test.UIAutomation.OneDat.Utility.MouseActions;
+
 
 public class OneDat_TC4 extends testBase {
 	OneDatElements elements;

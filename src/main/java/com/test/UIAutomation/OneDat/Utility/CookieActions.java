@@ -24,7 +24,7 @@ public class CookieActions extends testBase{
 		 public ChromeOptions disablecookieOnChrome() {
 		 // to disable the cookies for chrome
 		 ChromeOptions options = new ChromeOptions();
-		 HashMap prefs = new HashMap();
+		 HashMap<String, Object> prefs = new HashMap<String, Object>();
 		 prefs.put("profile.default_content_settings.cookies", 2);
 		 prefs.put("profile.block_third_party_cookies", true);
 		 options.setExperimentalOption("prefs", prefs);

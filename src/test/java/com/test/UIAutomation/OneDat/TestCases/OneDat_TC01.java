@@ -1,15 +1,9 @@
 package com.test.UIAutomation.OneDat.TestCases;
 
-import static org.testng.Assert.assertTrue;
-
 
 import java.util.HashMap;
-import java.util.Random;
-
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import com.codoid.products.exception.FilloException;
 import com.test.UIAutomation.OneDat.Pages.OneDatChkUtility;
 import com.test.UIAutomation.OneDat.TestBase.testBase;

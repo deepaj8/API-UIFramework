@@ -213,6 +213,13 @@
 			<version>0.7.7.0</version>
 		</dependency>
 
+<!-- for generating extent reports and pdf reports -->
+
+<dependency>
+    <groupId>tech.grasshopper</groupId>
+    <artifactId>extentreports-cucumber6-adapter</artifactId>
+    <version>2.8.1</version>
+</dependency>  
     
   </dependencies>
   

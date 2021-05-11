@@ -30,7 +30,7 @@ public class StepDefinition extends CommonFunctions {
 	
 	@Given("Add payload with {string} {string} {string}")
 	public void add_payload_with(String name, String language, String address) throws IOException {
-		 res=given().spec(requestSpecifications())
+		 res=given().spec(requestSpecForJsonWithQueryParams())
 					.body(data.addPlacePayload(name,language,address));
 	}
 	@When("user calls {string} with {string} http request")
@@ -62,7 +62,7 @@ public class StepDefinition extends CommonFunctions {
 		if(apis.equalsIgnoreCase("places"))
 		{
 		place_id=getStringFromJson(response,"place_id");
-		 res=given().spec(requestSpecifications()).queryParam("place_id",place_id);
+		 res=given().spec(requestSpecForJsonWithQueryParams()).queryParam("place_id",place_id);
 		 user_calls_with_http_request(resource,"GET");
 		  String actualName=getStringFromJson(response,"name");
 		  assertEquals(actualName,expectedName); 
@@ -70,7 +70,7 @@ public class StepDefinition extends CommonFunctions {
 		else if(apis.equalsIgnoreCase("books"))
 		{
 			id=getStringFromJson(response,"ID");
-			res=given().spec(requestSpecForLibrary()).queryParam("ID",id);
+			res=given().spec(requestSpecForJSON()).queryParam("ID",id);
 			user_calls_with_http_request(resource,"GET");
 			String actualName=getStringFromJson(response,"[0].book_name");
 			  assertEquals(actualName,expectedName); 
@@ -81,18 +81,18 @@ public class StepDefinition extends CommonFunctions {
     public void delete_payload_for(String apis) throws IOException {
 		if(apis.equalsIgnoreCase("places"))
 		{
-    	res =given().spec(requestSpecifications()).body(data.deleteAPIPayload(place_id));
+    	res =given().spec(requestSpecForJsonWithQueryParams()).body(data.deleteAPIPayload(place_id));
 		}
 		else if(apis.equalsIgnoreCase("books"))
 		{
-			res =given().spec(requestSpecForLibrary()).body(data.deleteBookPayLoad(id));
+			res =given().spec(requestSpecForJSON()).body(data.deleteBookPayLoad(id));
 		}
     }
     
     @Given("Add book payload with {string} {string} {int} {string}")
     public void add_book_payload_with(String name, String isbn, Integer aisle, String author) throws IOException {
     	
-    	res=given().spec(requestSpecForLibrary())
+    	res=given().spec(requestSpecForJSON())
 				.body(data.addBookPayLoad(name, isbn,aisle,author));
     }
 
@@ -105,7 +105,7 @@ public class StepDefinition extends CommonFunctions {
 		String isbn=hm.get("isbn");
 		Integer aisle=Integer.valueOf(hm.get("aisle"));
 		String author=hm.get("author");
-		res=given().spec(requestSpecForLibrary())
+		res=given().spec(requestSpecForJSON())
 				.body(data.addBookPayLoad(name, isbn,aisle,author));	
     }
 
@@ -114,7 +114,7 @@ public class StepDefinition extends CommonFunctions {
     public void delete_the_book_with_resource(String resource) throws IOException
     {
     	id=getStringFromJson(response,"ID");
-    	res =given().spec(requestSpecForLibrary()).body(data.deleteBookPayLoad(id));
+    	res =given().spec(requestSpecForJSON()).body(data.deleteBookPayLoad(id));
     	ApiResources resourceApi=ApiResources.valueOf(resource);
     	res.when().post(resourceApi.getResource());
     }

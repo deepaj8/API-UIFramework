@@ -67,7 +67,8 @@ public class CommonFunctions {
 	public static PageObjectManager pomanager;
 	public static StringActions stringHandler;
 	public static MouseActions mouseHandler;
-	public static RequestSpecification req;
+	public static RequestSpecification requestSpec;
+	public static PrintStream logapi;
 	
 /****loads the requested data from the property file and returns the value*****/
 	public String loadData(String configVal) {
@@ -280,32 +281,40 @@ public class CommonFunctions {
 /******************COMMON FUNCTIONS FOR API TESTING *************************/
 	
 	
-	/****Request specification for place api's ****/
-	public RequestSpecification requestSpecifications() throws IOException {
-		if(req==null)
-		{
-		PrintStream log=new PrintStream(new FileOutputStream("APILogReports.txt"));
-		req =new RequestSpecBuilder().setBaseUri(loadData("baseUri")).addQueryParam("key", loadData("queryParam"))
-				.addFilter(RequestLoggingFilter.logRequestTo(log))
-				.addFilter(ResponseLoggingFilter.logResponseTo(log))
-				.setContentType(ContentType.JSON).build();
-		return req;
+	public RequestSpecification setBaseUri() throws IOException {
+		if(requestSpec==null)
+		{	logapi=new PrintStream(new FileOutputStream("APIRequest_ResponseReport.txt"));
+		requestSpec = new RequestSpecBuilder()
+        		.setBaseUri(loadData("baseUri"))
+        		.addFilter(RequestLoggingFilter.logRequestTo(logapi))
+				.addFilter(ResponseLoggingFilter.logResponseTo(logapi))
+        		.build();
+		return requestSpec;
 		}
-		return req;
+		return requestSpec;
 	}
 	
-	/****Request specification for library api's ****/
-	public RequestSpecification requestSpecForLibrary() throws IOException {
-		if(req==null)
-		{
-		PrintStream log=new PrintStream(new FileOutputStream("APILogReports.txt"));
-		req =new RequestSpecBuilder().setBaseUri(loadData("baseUri"))
-				.addFilter(RequestLoggingFilter.logRequestTo(log))
-				.addFilter(ResponseLoggingFilter.logResponseTo(log))
-				.setContentType(ContentType.JSON).build();
-		return req;
-		}
-		return req;
+	
+	/****Request Specification for Json Content Type if Query Parameters Present *****/
+	
+	public RequestSpecification requestSpecForJsonWithQueryParams() throws IOException {	
+		return setBaseUri().queryParam("key", loadData("queryParam")).contentType(ContentType.JSON);			
+	}
+	
+/****Request Specification for XML Content Type if Query Parameters Present *****/
+	
+	public RequestSpecification requestSpecForXMLWithQueryParams() throws IOException {	
+		return setBaseUri().queryParam("key", loadData("queryParam")).contentType(ContentType.XML);			
+	}
+	
+	/****Request Specification for Json Content Type ****/
+	public RequestSpecification requestSpecForJSON() throws IOException {
+		return setBaseUri().contentType(ContentType.JSON);
+	}
+	
+	/****Request Specification for XML Content Type ****/
+	public RequestSpecification requestSpecForXML() throws IOException {
+		return setBaseUri().contentType(ContentType.XML);
 	}
 	
 	/****convert json to jsonpath object to evaluate response****/

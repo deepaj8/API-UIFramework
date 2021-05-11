@@ -329,7 +329,7 @@ public class CommonFunctions {
 	}
 	
 	/****get the double value from the response based on the json key****/
-	public double getBooleanFromJson(Response response,String key)
+	public double getDoubleFromJson(Response response,String key)
 	{
 		return getJsonPath(response).getDouble(key);
 	}

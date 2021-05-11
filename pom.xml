@@ -9,8 +9,9 @@
   </properties>
   
   <profiles>
+  <!-- For triggering API tests -->
   <profile>
-  <id>Regression</id>
+  <id>API</id>
    <build>
    <pluginManagement>
  <plugins>
@@ -33,14 +34,17 @@
    <!-- for generating advanced reports for failed tests below tag has to set true -->
          <testFailureIgnore>true</testFailureIgnore>
          <suiteXmlFiles>
-         <suiteXmlFile>testngregression.xml</suiteXmlFile>
+         <suiteXmlFile>testngapi.xml</suiteXmlFile>
          </suiteXmlFiles>
          </configuration>
        </plugin> 
+       
+       
         </plugins>
         </pluginManagement>
  </build>
   </profile>
+  <!-- For triggering Smoke tests -->
   <profile>
   <id>Smoke</id>
    <build>
@@ -74,16 +78,45 @@
  </build>
   
   </profile>
+  <!-- For triggering Regression tests -->
+ <profile>
+  <id>Regression</id>
+   <build>
+   <pluginManagement>
+ <plugins>
+ <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.7.0</version>
+              <configuration>
+                  <source>8</source>
+                  <target>8</target>
+              </configuration>
+          </plugin>
+
+
+<plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
+         <version>2.22.0</version>
+         <configuration>
+   <!-- for generating advanced reports for failed tests below tag has to set true -->
+         <testFailureIgnore>true</testFailureIgnore>
+         <suiteXmlFiles>
+         <suiteXmlFile>testngregression.xml</suiteXmlFile>
+         </suiteXmlFiles>
+         </configuration>
+       </plugin> 
+        </plugins>
+        </pluginManagement>
+ </build>
+  
+  </profile>
+
+  
+  
   </profiles>
   
-<repositories>
-    <repository>
-        <id>resources</id>
-        <url>file:///${project.basedir}/src/main/java/com/test/automation/OneDat/Executables</url>
-    </repository>
-</repositories>
-  
-
  
  <dependencies>
  
@@ -111,11 +144,6 @@
     <version>6.10.3</version>
 </dependency>
 
-<dependency>
-    <groupId>io.cucumber</groupId>
-    <artifactId>cucumber-jvm-deps</artifactId>
-    <version>1.0.6</version>
-</dependency>
 
 <dependency>
     <groupId>io.rest-assured</groupId>

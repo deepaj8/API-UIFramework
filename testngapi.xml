@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test name="Test">
     <classes>
-      <class name="com.test.APIAutomation.OneDat.RunnerClasses.AddPlaceRunner"/>
+      <class name="com.test.APIAutomation.OneDat.RunnerClasses.TestRunner"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

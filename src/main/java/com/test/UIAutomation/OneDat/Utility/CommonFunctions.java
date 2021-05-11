@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Calendar;
@@ -303,13 +305,31 @@ public class CommonFunctions {
 		return req;
 	}
 	
-	/****get the string value from the response based on the json key****/
-	public String getJsonPath(Response response,String key)
+	/****convert json to jsonpath object to evaluate response****/
+	public JsonPath getJsonPath(Response response)
 	{
 		String s=response.asString();
 		JsonPath js=new JsonPath(s);
-		return js.get(key).toString();
+		return js;
 	}
 	
+	/****get the string value from the response based on the json key****/
+	public String getStringFromJson(Response response,String key)
+	{
+		return getJsonPath(response).get(key).toString();
+	}
+	
+	/****get the int value from the response based on the json key****/
+	public int getIntFromJson(Response response,String key)
+	{
+		return getJsonPath(response).getInt(key);
+	}
+	
+	/****convert static json file to string****/
+	public String readJsonFile(String fileName) throws IOException
+	{
+		
+		return new String(Files.readAllBytes(Paths.get(Constants.TESTDATA_PATH+fileName+".json")));
+	}
 	
 }

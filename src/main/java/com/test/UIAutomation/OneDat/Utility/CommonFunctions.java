@@ -26,6 +26,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
+import com.test.APIAutomation.OneDat.Resources.ApiResources;
 //import com.relevantcodes.extentreports.ExtentReports;
 //import com.relevantcodes.extentreports.ExtentTest;
 //import com.relevantcodes.extentreports.LogStatus;
@@ -68,6 +69,7 @@ public class CommonFunctions {
 	public static MouseActions mouseHandler;
 	public static RequestSpecification requestSpec;
 	public static PrintStream logapi;
+	public static Response response;
 	
 /****loads the requested data from the property file and returns the value*****/
 	public String loadData(String configVal) {
@@ -346,6 +348,13 @@ public class CommonFunctions {
 	{
 		
 		return new String(Files.readAllBytes(Paths.get(Constants.TESTDATA_PATH+fileName+".json")));
+	}
+	
+	/****get resource path****/
+	public String getResourcePath(String resource)
+	{
+		ApiResources resourceApi=ApiResources.valueOf(resource);
+		return resourceApi.getResource();
 	}
 	
 }

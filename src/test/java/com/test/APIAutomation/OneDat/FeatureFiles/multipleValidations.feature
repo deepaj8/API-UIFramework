@@ -2,8 +2,8 @@ Feature: validating AddBook api's with multiple data
 
   Scenario Outline: Verify adding book api's using multiple AddBookApi
          Given Add book payload with "<sheetname>" <testcaseid>
-         When user calls "AddBookApi" with "post" http request
-         Then the Api call is success with status code 200
+         When user calls multiple bookApi "AddBookApi" with "post" http request
+         Then the bookApi call is success with status code 200
          And delete the book with "DeleteBookApi" resource
     Examples: 
       | sheetname | testcaseid|

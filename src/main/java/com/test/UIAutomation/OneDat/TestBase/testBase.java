@@ -8,7 +8,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
-import com.relevantcodes.extentreports.LogStatus;
+//import com.relevantcodes.extentreports.LogStatus;
 import com.test.UIAutomation.OneDat.Utility.CommonFunctions;
 import com.test.UIAutomation.OneDat.Utility.VideoRecorder;
 
@@ -25,8 +25,8 @@ public class testBase extends CommonFunctions {
 
 	@BeforeMethod
 	public void startTest(Method method) {
-		test = extent.startTest(method.getName());
-		test.log(LogStatus.INFO, method.getName() + "--Test Started");
+	//	test = extent.startTest(method.getName());
+	//	test.log(LogStatus.INFO, method.getName() + "--Test Started");
 
 	}
 	

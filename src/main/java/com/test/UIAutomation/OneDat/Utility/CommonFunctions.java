@@ -26,9 +26,9 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
+//import com.relevantcodes.extentreports.ExtentReports;
+//import com.relevantcodes.extentreports.ExtentTest;
+//import com.relevantcodes.extentreports.LogStatus;
 import com.test.UIAutomation.OneDat.ExcelUtility.ExcelReader;
 import com.test.UIAutomation.OneDat.ExcelUtility.ExcelWriter;
 import com.test.UIAutomation.OneDat.ExcelUtility.GetCount;
@@ -46,10 +46,10 @@ import io.restassured.specification.RequestSpecification;
 public class CommonFunctions {
 	protected final Logger log = Logger.getLogger(CommonFunctions.class.getName());
 	public static Properties prop;
-	public static ExtentTest test;
+	//public static ExtentTest test;
 	public static WebDriver driver;
 	public static SimpleDateFormat format;
-	public static ExtentReports extent;
+	//public static ExtentReports extent;
 	public static Calendar cal;
 	public static SelectActions selectHandler;
 	public static AlertActions alertHandler;
@@ -87,7 +87,7 @@ public class CommonFunctions {
 	static {
 		cal = Calendar.getInstance();
 		format = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
-		extent = new ExtentReports(Constants.REPORTS_PATH + format.format(cal.getTime()) + ".html", false);
+		//extent = new ExtentReports(Constants.REPORTS_PATH + format.format(cal.getTime()) + ".html", false);
 
 	}
 	
@@ -166,8 +166,8 @@ public class CommonFunctions {
 	public void closeBrowser() {
 		driver.quit();
 		log.info("All the browser instances are closed");
-		extent.endTest(test);
-		extent.flush();
+		//extent.endTest(test);
+		//extent.flush();
 	}
 
 
@@ -175,13 +175,11 @@ public class CommonFunctions {
 /*****Get the result after executing the test*****/
 	public void getResult(ITestResult result) throws Exception {
 		if (result.getStatus() == ITestResult.SUCCESS) {
-			test.log(LogStatus.PASS, result.getName() + "--Test is Passed");
+		//	test.log(LogStatus.PASS, result.getName() + "--Test is Passed");
 		} else if (result.getStatus() == ITestResult.FAILURE) {
-			test.log(LogStatus.FAIL, result.getName() + "--Test is Failed--"
-					+ result.getThrowable().getLocalizedMessage() + test.addScreenCapture(captureScreenShot(result)));
+		//	test.log(LogStatus.FAIL, result.getName() + "--Test is Failed--" + result.getThrowable().getLocalizedMessage() + test.addScreenCapture(captureScreenShot(result)));
 		} else if (result.getStatus() == ITestResult.SKIP) {
-			test.log(LogStatus.SKIP,
-					result.getName() + "--Test is Skipped and the Reason is--" + result.getThrowable());
+		//	test.log(LogStatus.SKIP, result.getName() + "--Test is Skipped and the Reason is--" + result.getThrowable());
 		}
 	}
 	
@@ -207,7 +205,7 @@ public class CommonFunctions {
 		log.info("Inside logInReport Utility");
 		log.info(data);
 		Reporter.log(data);
-		test.log(LogStatus.INFO, data);
+	//	test.log(LogStatus.INFO, data);
 	}
 	
 
@@ -221,7 +219,7 @@ public class CommonFunctions {
 			String path = new File(System.getProperty("user.dir")).getAbsolutePath() + Constants.SCREENSHOT_PATH;
 			destfile = new File((String) path + testname + "_" + format.format(cal.getTime()) + ".png");
 			FileHandler.copy(srcfile, destfile);
-			test.log(LogStatus.INFO, testname + test.addScreenCapture(destfile.getAbsolutePath()));
+		//	test.log(LogStatus.INFO, testname + test.addScreenCapture(destfile.getAbsolutePath()));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -238,7 +236,7 @@ public class CommonFunctions {
 			String path = new File(System.getProperty("user.dir")).getAbsolutePath() + Constants.SCREENSHOT_PATH;
 			destfile = new File((String) path + elementName + "_" + format.format(cal.getTime()) + ".png");
 			FileHandler.copy(srcfile, destfile);
-			test.log(LogStatus.INFO, elementName + test.addScreenCapture(destfile.getAbsolutePath()));
+		//	test.log(LogStatus.INFO, elementName + test.addScreenCapture(destfile.getAbsolutePath()));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

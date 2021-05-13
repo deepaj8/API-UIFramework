@@ -37,12 +37,14 @@ import com.test.UIAutomation.OneDat.PageObjectManager.PageObjectManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 
 public class CommonFunctions {
 	protected final Logger log = Logger.getLogger(CommonFunctions.class.getName());
@@ -67,7 +69,8 @@ public class CommonFunctions {
 	public static PageObjectManager pomanager;
 	public static StringActions stringHandler;
 	public static MouseActions mouseHandler;
-	public static RequestSpecification requestSpec;
+	public static RequestSpecification requestSpec; 
+	public static ResponseSpecification responseSpec;
 	public static PrintStream logapi;
 	public static Response response;
 	
@@ -293,6 +296,11 @@ public class CommonFunctions {
 		return requestSpec;
 	}
 	
+	public ResponseSpecification responseSpecForJson() {
+		 responseSpec =new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
+	return responseSpec;
+	}
+
 	
 	/****Request Specification for Json Content Type if Query Parameters Present *****/
 	
@@ -356,5 +364,6 @@ public class CommonFunctions {
 		ApiResources resourceApi=ApiResources.valueOf(resource);
 		return resourceApi.getResource();
 	}
+	
 	
 }

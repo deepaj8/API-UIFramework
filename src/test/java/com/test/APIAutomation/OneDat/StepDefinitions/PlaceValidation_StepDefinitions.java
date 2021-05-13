@@ -18,7 +18,6 @@ import com.test.UIAutomation.OneDat.Utility.CommonFunctions;
 public class PlaceValidation_StepDefinitions extends CommonFunctions {
 	
 	RequestSpecification res;
-	ResponseSpecification resspec;
 	TestBuild data=new TestBuild();
 	static String place_id;
 	
@@ -30,7 +29,6 @@ public class PlaceValidation_StepDefinitions extends CommonFunctions {
 	}
 	@When("user calls {string} with {string} http request")
 	public void user_calls_with_http_request(String resource, String method) {
-		resspec =new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 		if(method.equalsIgnoreCase("POST"))
 		{
 	   response=res.when().post(getResourcePath(resource));

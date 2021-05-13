@@ -18,7 +18,6 @@ import com.test.UIAutomation.OneDat.Utility.CommonFunctions;
 public class BookValidation_StepDefinitions extends CommonFunctions {
 	
 	RequestSpecification res;
-	ResponseSpecification resspec;
 	TestBuild data=new TestBuild();
 	static String id;
 	
@@ -31,8 +30,7 @@ public class BookValidation_StepDefinitions extends CommonFunctions {
 	 
 	 @When("user calls bookApi {string} with {string} http request")
 		public void user_calls_bookApi_with_http_request(String resource, String method) {
-			resspec =new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
-			if(method.equalsIgnoreCase("POST"))
+		if(method.equalsIgnoreCase("POST"))
 			{
 		   response=res.when().post(getResourcePath(resource));
 			}
@@ -42,8 +40,8 @@ public class BookValidation_StepDefinitions extends CommonFunctions {
 			}
 		}
 	 @Then("the bookApi call is success with status code {int}")
-		public void the_bookApi_call_is_success_with_status_code(Integer int1) {
-			assertEquals(response.getStatusCode(),200);
+		public void the_bookApi_call_is_success_with_status_code(Integer expCode) {
+		 response.then().spec(jsonResponseSpecForStatusCode(expCode)).extract();
 		}
 	 @And("verify expected name in books is {string} using {string}")
 		public void verify_expected_name_in_books_using(String expectedName, String resource) throws IOException {
@@ -52,6 +50,7 @@ public class BookValidation_StepDefinitions extends CommonFunctions {
 				res=given().spec(requestSpecForJSON()).queryParam("ID",id);
 				 user_calls_bookApi_with_http_request(resource,"GET");
 				String actualName=getStringFromJson(response,"[0].book_name");
+				logMessageInToResults("Returned name in response is--"+actualName);
 				  assertEquals(actualName,expectedName); 
 		}
 		@Given("Delete payload for books")

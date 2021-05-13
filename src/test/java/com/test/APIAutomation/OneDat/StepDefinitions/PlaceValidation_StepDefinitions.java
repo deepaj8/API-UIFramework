@@ -32,6 +32,7 @@ public class PlaceValidation_StepDefinitions extends CommonFunctions {
 		if(method.equalsIgnoreCase("POST"))
 		{
 	   response=res.when().post(getResourcePath(resource));
+	   System.out.println("-----"+response.asString());
 		}
 		else if(method.equalsIgnoreCase("GET"))
 		{
@@ -39,9 +40,11 @@ public class PlaceValidation_StepDefinitions extends CommonFunctions {
 		}
 	}
 	@Then("the placeApi call is success with status code {int}")
-	public void the_placeApi_call_is_success_with_status_code(Integer int1) {
-		assertEquals(response.getStatusCode(),200);
+	public void the_placeApi_call_is_success_with_status_code(Integer expCode) {
+		response.then().spec(jsonResponseSpecForStatusCode(expCode)).extract();
+		
 	}
+	
 	@And("{string} in response body is {string}")
 	public void in_response_body_is(String key, String expected) {
 		assertEquals(getStringFromJson(response,key),expected);
@@ -52,6 +55,7 @@ public class PlaceValidation_StepDefinitions extends CommonFunctions {
 		 res=given().spec(requestSpecForJsonWithQueryParams()).queryParam("place_id",place_id);
 		 user_calls_with_http_request(resource,"GET");
 		  String actualName=getStringFromJson(response,"name");
+		  logMessageInToResults("Returned name in response is--"+actualName);
 		  assertEquals(actualName,expectedName);
 	   
 	}

@@ -26,6 +26,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import com.test.APIAutomation.OneDat.Resources.ApiResources;
 //import com.relevantcodes.extentreports.ExtentReports;
 //import com.relevantcodes.extentreports.ExtentTest;
@@ -296,11 +297,18 @@ public class CommonFunctions {
 		return requestSpec;
 	}
 	
-	public ResponseSpecification responseSpecForJson() {
-		 responseSpec =new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
+	/****Building response specification for expected status code *****/
+	public ResponseSpecification jsonResponseSpecForStatusCode(int expectedStatusCode) {
+		 responseSpec =new ResponseSpecBuilder().expectStatusCode(expectedStatusCode).expectContentType(ContentType.JSON).build();
 	return responseSpec;
 	}
 
+	
+	/****Building response specification for expected Header*****/
+	public ResponseSpecification jsonResponseSpecForHeader(String headerName,String expectedValue) {
+		 responseSpec =new ResponseSpecBuilder().expectHeader(headerName,expectedValue).expectContentType(ContentType.JSON).build();
+	return responseSpec;
+	}
 	
 	/****Request Specification for Json Content Type if Query Parameters Present *****/
 	
@@ -365,5 +373,11 @@ public class CommonFunctions {
 		return resourceApi.getResource();
 	}
 	
+	/****useful to write messages in results****/
+	public void logMessageInToResults(String message)
+	{
+		ExtentCucumberAdapter.addTestStepLog(message);	
+	}
+
 	
 }

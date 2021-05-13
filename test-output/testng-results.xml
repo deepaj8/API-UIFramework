@@ -1,56 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-05-11T09:38:37Z" name="Suite" finished-at="2021-05-11T09:38:41Z" duration-ms="4511">
+  <suite started-at="2021-05-13T09:28:00Z" name="Default suite" finished-at="2021-05-13T09:28:10Z" duration-ms="9404">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@1e097d59]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@3cdf2c61]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2021-05-11T09:38:37Z" name="Test" finished-at="2021-05-11T09:38:41Z" duration-ms="4511">
+    <test started-at="2021-05-13T09:28:00Z" name="Default test" finished-at="2021-05-13T09:28:10Z" duration-ms="9404">
       <class name="com.test.APIAutomation.OneDat.RunnerClasses.TestRunner">
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@1e097d59]" started-at="2021-05-11T09:38:37Z" name="setUpClass" finished-at="2021-05-11T09:38:37Z" duration-ms="371" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@3cdf2c61]" started-at="2021-05-13T09:28:00Z" name="setUpClass" finished-at="2021-05-13T09:28:01Z" duration-ms="924" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@1e097d59]" started-at="2021-05-11T09:38:37Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-05-11T09:38:39Z" duration-ms="2232" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@3cdf2c61]" started-at="2021-05-13T09:28:01Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-05-13T09:28:06Z" duration-ms="4092" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Verify adding book api's using AddBookApi"]]>
+                <![CDATA["Verify adding book api's using multiple AddBookApi"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Optional[Validating Library Api's]"]]>
+                <![CDATA["Optional[validating AddBook api's with multiple data]"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@1e097d59]" started-at="2021-05-11T09:38:39Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-05-11T09:38:40Z" duration-ms="165" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@3cdf2c61]" started-at="2021-05-13T09:28:06Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-05-13T09:28:06Z" duration-ms="866" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["verify delete book api's using DeleteBookApi"]]>
+                <![CDATA["Verify adding book api's using multiple AddBookApi"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Optional[Validating Library Api's]"]]>
+                <![CDATA["Optional[validating AddBook api's with multiple data]"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@1e097d59]" started-at="2021-05-11T09:38:40Z" name="tearDownClass" finished-at="2021-05-11T09:38:41Z" duration-ms="1723" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@3cdf2c61]" started-at="2021-05-13T09:28:06Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-05-13T09:28:07Z" duration-ms="754" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify adding book api's using multiple AddBookApi"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[validating AddBook api's with multiple data]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@3cdf2c61]" started-at="2021-05-13T09:28:07Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-05-13T09:28:08Z" duration-ms="757" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify adding book api's using multiple AddBookApi"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[validating AddBook api's with multiple data]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.test.APIAutomation.OneDat.RunnerClasses.TestRunner@3cdf2c61]" started-at="2021-05-13T09:28:08Z" name="tearDownClass" finished-at="2021-05-13T09:28:10Z" duration-ms="1973" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- com.test.APIAutomation.OneDat.RunnerClasses.TestRunner -->
-    </test> <!-- Test -->
-  </suite> <!-- Suite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

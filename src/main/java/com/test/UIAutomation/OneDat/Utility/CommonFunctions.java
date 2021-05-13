@@ -26,6 +26,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import com.test.APIAutomation.OneDat.Resources.ApiResources;
 //import com.relevantcodes.extentreports.ExtentReports;
 //import com.relevantcodes.extentreports.ExtentTest;
@@ -355,6 +356,12 @@ public class CommonFunctions {
 	{
 		ApiResources resourceApi=ApiResources.valueOf(resource);
 		return resourceApi.getResource();
+	}
+	
+	/****useful to write messages in results****/
+	public void logMessageInToResults(String message)
+	{
+		ExtentCucumberAdapter.addTestStepLog(message);	
 	}
 	
 }

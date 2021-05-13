@@ -54,6 +54,7 @@ public class PlaceValidation_StepDefinitions extends CommonFunctions {
 		 res=given().spec(requestSpecForJsonWithQueryParams()).queryParam("place_id",place_id);
 		 user_calls_with_http_request(resource,"GET");
 		  String actualName=getStringFromJson(response,"name");
+		  logMessageInToResults("actuale name is--"+actualName);
 		  assertEquals(actualName,expectedName);
 	   
 	}

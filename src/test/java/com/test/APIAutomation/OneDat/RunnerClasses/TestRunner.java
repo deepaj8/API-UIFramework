@@ -4,7 +4,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-		features="src/test/java/com/test/APIAutomation/OneDat/FeatureFiles/bookValidation.feature",
+		features="src/test/java/com/test/APIAutomation/OneDat/FeatureFiles/multipleValidations.feature",
 	  	glue={"classpath:com/test/APIAutomation/OneDat/StepDefinitions"},
 		monochrome=true,
 	    dryRun=false,

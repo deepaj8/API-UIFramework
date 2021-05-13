@@ -34,6 +34,7 @@ public class MultipleValidation_StepDefinitions extends CommonFunctions {
 			String author=hm.get("author");
 			res=given().spec(requestSpecForJSON())
 					.body(data.addBookPayLoad(name, isbn,aisle,author));	
+			logMessageInToResults("add payload with--"+name+" "+isbn+" "+aisle+" "+author);
 	    }
 	 
 	 @When("user calls multiple bookApi {string} with {string} http request")

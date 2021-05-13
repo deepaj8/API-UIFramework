@@ -52,6 +52,7 @@ public class BookValidation_StepDefinitions extends CommonFunctions {
 				res=given().spec(requestSpecForJSON()).queryParam("ID",id);
 				 user_calls_bookApi_with_http_request(resource,"GET");
 				String actualName=getStringFromJson(response,"[0].book_name");
+				logMessageInToResults("actuale name is--"+actualName);
 				  assertEquals(actualName,expectedName); 
 		}
 		@Given("Delete payload for books")

@@ -18,43 +18,11 @@ import io.cucumber.java.Scenario;
 
 public class testBase extends CommonFunctions {
 
-/*
-	@BeforeClass
+
+	/************************* UI Functions ************************/
+	
+	
 	public void setUp() {
-		init();
-	}
-	
-	
-
-	@BeforeMethod
-	public void startTest(Method method) {
-	//	test = extent.startTest(method.getName());
-	//	test.log(LogStatus.INFO, method.getName() + "--Test Started");
-
-	}
-	
-	
-
-	@AfterMethod
-	public void AfterMethod(ITestResult result) throws Exception {
-		//getResult(result);
-		// getScreenShot(result);
-	}
-
-	
-	@AfterClass(alwaysRun = true)
-	public void tearDown() throws Exception {
-		closeBrowser();
-		if (loadData("screenrecord").equalsIgnoreCase("yes")) {
-			VideoRecorder.stopRecord();
-		}
-
-	}
-	*/
-	/*************************CUCUMBER ANNOTATIONS************************/
-	
-	
-	public void setUp1() {
 		init();
 	}
 	
@@ -66,19 +34,22 @@ public class testBase extends CommonFunctions {
 	}
 	
 	
-	public void AfterMethod1(Scenario scenario) throws Exception {
+	public void afterMethod(Scenario scenario) throws Exception {
 		getResult(scenario);
 		// getScreenShot(result);
 	}
 
 	
 	
-	public void tearDown1() throws Exception {
+	public void tearDown() throws Exception {
 		closeBrowser();
 		if (loadData("screenrecord").equalsIgnoreCase("yes")) {
 			VideoRecorder.stopRecord();
 		}
 
 	}
+	
+	
+	/************************* API Functions ************************/
 
 }

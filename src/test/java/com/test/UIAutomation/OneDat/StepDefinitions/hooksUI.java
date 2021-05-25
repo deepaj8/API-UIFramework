@@ -13,7 +13,7 @@ import io.cucumber.java.Scenario;
 public class hooksUI extends testBase{
 	@Before
 public void setUpApplication() {
-		setUp1();
+		setUp();
 	}
 	
 /*	@BeforeStep
@@ -24,14 +24,14 @@ public void beforeStep(Method method) {
 
 	@After(order=1)
 	public void afterStep(Scenario scenario) throws Exception {
-			AfterMethod1(scenario);
+			afterMethod(scenario);
 			
 		}
 		
 	
 	@After(order=0)
 public void tearDownApplication() throws Exception {
-		tearDown1();
+		tearDown();
 	}
 
 }

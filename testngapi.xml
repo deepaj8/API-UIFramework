@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test name="Test">
     <classes>
-      <class name="com.test.APIAutomation.OneDat.RunnerClasses.TestRunner"/>
+      <class name="com.test.API_UIAutomation.OneDat.RunnerClasses.TestRunner"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

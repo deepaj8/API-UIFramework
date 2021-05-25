@@ -1,7 +1,9 @@
 package com.test.UIAutomation.OneDat.Utility;
 
 import java.io.File;
+import static io.restassured.RestAssured.given;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -14,6 +16,8 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +32,7 @@ import org.testng.Reporter;
 
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import com.test.APIAutomation.OneDat.Resources.ApiResources;
+import com.test.APIAutomation.OneDat.Resources.AuthToken;
 //import com.relevantcodes.extentreports.ExtentReports;
 //import com.relevantcodes.extentreports.ExtentTest;
 //import com.relevantcodes.extentreports.LogStatus;
@@ -35,13 +40,13 @@ import com.test.UIAutomation.OneDat.ExcelUtility.ExcelReader;
 import com.test.UIAutomation.OneDat.ExcelUtility.ExcelWriter;
 import com.test.UIAutomation.OneDat.ExcelUtility.GetCount;
 import com.test.UIAutomation.OneDat.PageObjectManager.PageObjectManager;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
+import io.restassured.parsing.Parser;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -74,6 +79,7 @@ public class CommonFunctions {
 	public static ResponseSpecification responseSpec;
 	public static PrintStream logapi;
 	public static Response response;
+	public AuthToken authtoken;
 	
 /****loads the requested data from the property file and returns the value*****/
 	public String loadData(String configVal) {
@@ -283,7 +289,7 @@ public class CommonFunctions {
 	
 /******************COMMON FUNCTIONS FOR API TESTING *************************/
 	
-	
+	/****Request specification with base uri and logging the reports****/ 
 	public RequestSpecification setBaseUri() throws IOException {
 		if(requestSpec==null)
 		{	logapi=new PrintStream(new FileOutputStream("APIRequest_ResponseReport.txt"));
@@ -295,6 +301,19 @@ public class CommonFunctions {
 		return requestSpec;
 		}
 		return requestSpec;
+	}
+	
+	/****Request specification without base uri and logging the reports****/
+	public RequestSpecification withOutBaseUri() throws FileNotFoundException {
+		if(requestSpec==null)
+		{	logapi=new PrintStream(new FileOutputStream("APIRequest_ResponseReport.txt"));
+		requestSpec = new RequestSpecBuilder()
+        		.addFilter(RequestLoggingFilter.logRequestTo(logapi))
+				.addFilter(ResponseLoggingFilter.logResponseTo(logapi))
+        		.build();
+		return requestSpec;
+		}
+		return requestSpec;	
 	}
 	
 	/****Building response specification for expected status code *****/
@@ -330,6 +349,12 @@ public class CommonFunctions {
 	/****Request Specification for XML Content Type ****/
 	public RequestSpecification requestSpecForXML() throws IOException {
 		return setBaseUri().contentType(ContentType.XML);
+	}
+	
+	/****Request Specification for access token type authentication****/
+	public RequestSpecification requestSpecWithAccessToken() throws IOException {
+		authtoken=new AuthToken();
+		return withOutBaseUri().queryParam("access_token",authtoken.getAccessToken()).contentType(ContentType.JSON);
 	}
 	
 	/****convert json to jsonpath object to evaluate response****/
@@ -378,6 +403,5 @@ public class CommonFunctions {
 	{
 		ExtentCucumberAdapter.addTestStepLog(message);	
 	}
-
 	
 }

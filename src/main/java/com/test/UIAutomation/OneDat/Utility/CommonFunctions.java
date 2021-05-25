@@ -2,6 +2,7 @@ package com.test.UIAutomation.OneDat.Utility;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -30,6 +31,7 @@ import org.testng.Reporter;
 
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import com.test.APIAutomation.OneDat.Resources.ApiResources;
+import com.test.APIAutomation.OneDat.Resources.AuthToken;
 //import com.relevantcodes.extentreports.ExtentReports;
 //import com.relevantcodes.extentreports.ExtentTest;
 //import com.relevantcodes.extentreports.LogStatus;
@@ -78,6 +80,7 @@ public class CommonFunctions {
 	public static ResponseSpecification responseSpec;
 	public static PrintStream logapi;
 	public static Response response;
+	public AuthToken authtoken;
 	
 /****loads the requested data from the property file and returns the value*****/
 	public String loadData(String configVal) {
@@ -308,6 +311,19 @@ public class CommonFunctions {
 		return requestSpec;
 	}
 	
+	/****Request specification without base uri and logging the reports****/
+	public RequestSpecification withOutBaseUri() throws FileNotFoundException {
+		if(requestSpec==null)
+		{	logapi=new PrintStream(new FileOutputStream("APIRequest_ResponseReport.txt"));
+		requestSpec = new RequestSpecBuilder()
+        		.addFilter(RequestLoggingFilter.logRequestTo(logapi))
+				.addFilter(ResponseLoggingFilter.logResponseTo(logapi))
+        		.build();
+		return requestSpec;
+		}
+		return requestSpec;	
+	}
+	
 	/****Building response specification for expected status code *****/
 	public ResponseSpecification jsonResponseSpecForStatusCode(int expectedStatusCode) {
 		 responseSpec =new ResponseSpecBuilder().expectStatusCode(expectedStatusCode).expectContentType(ContentType.JSON).build();
@@ -331,6 +347,12 @@ public class CommonFunctions {
 	
 	public RequestSpecification requestSpecForXMLWithQueryParams() throws IOException {	
 		return setBaseUri().queryParam("key", loadData("queryParam")).contentType(ContentType.XML);			
+	}
+	
+	/****Request Specification for access token type authentication****/
+	public RequestSpecification requestSpecWithAccessToken() throws IOException {
+		authtoken=new AuthToken();
+		return withOutBaseUri().queryParam("access_token",authtoken.getAccessToken()).contentType(ContentType.JSON);
 	}
 	
 	/****Request Specification for Json Content Type ****/

@@ -2,7 +2,7 @@ package com.test.UIAutomation.OneDat.Utility;
 
 public class Constants extends CommonFunctions{
 
-	public static final String CONFIG_FILE_PATH="src/main/java/com/test/UIAutomation/OneDat/ConfigFile/config.properties";
+	public static final String CONFIG_FILE_PATH="src/main/java/com/test/API_UIAutomation/OneDat/ConfigFile/config.properties";
 	public static final String CHROMEDRIVERKEY="webdriver.chrome.driver";
 	public static final String FIREFOXDRIVERKEY="webdriver.gecko.driver";
 	public static final String EDGEDRIVERKEY="webdriver.edge.driver";

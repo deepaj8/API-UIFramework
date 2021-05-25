@@ -389,6 +389,5 @@ public class CommonFunctions {
 	{
 		ExtentCucumberAdapter.addTestStepLog(message);	
 	}
-	
-	
+
 }

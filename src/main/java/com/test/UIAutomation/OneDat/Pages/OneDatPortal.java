@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.test.UIAutomation.OneDat.TestBase.testBase;
+import com.test.UIAutomation.OneDat.Utility.CommonFunctions;
 
 public class OneDatPortal extends testBase{
 	

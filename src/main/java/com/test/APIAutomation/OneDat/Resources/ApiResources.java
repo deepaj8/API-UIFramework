@@ -7,7 +7,8 @@ public enum ApiResources {
 	DeletePlaceApi("/maps/api/place/delete/json"),
 	AddBookApi("/Library/Addbook.php"),
 	GetBookApi("/Library/GetBook.php"),
-	DeleteBookApi("/Library/DeleteBook.php");
+	DeleteBookApi("/Library/DeleteBook.php"),
+	GetCoursesApi("https://rahulshettyacademy.com/getCourse.php");
 	
 	private String resource;
 	

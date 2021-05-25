@@ -12,7 +12,7 @@ public class OneDat_TC01 extends testBase{
 	
 	
 	@DataProvider(name="data")
-	public Object[][] getTestDta(){
+	public HashMap<String, String> getTestDta(){
 		return excelReader.getData("sample2","TC_Data","TC1");
 		
 	}

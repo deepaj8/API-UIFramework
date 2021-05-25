@@ -7,7 +7,7 @@
 
   <test thread-count="5" name="NavigateToPortal">
     <classes>
-          <class name="com.test.automation.OneDat.TestCases.OneDat_TC0"/> 
+          <class name="com.test.API_UIAutomation.OneDat.RunnerClasses.TestRunner"/> 
           <class name="com.test.automation.OneDat.TestCases.OneDat_TC1"/>   
                    
     </classes>

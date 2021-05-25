@@ -15,7 +15,7 @@ public class OneDat_TC2 extends testBase{
 	OneDatHome home;
 	 
 	@DataProvider(name="data")
-	public Object[][] getTestDta(){
+	public HashMap<String, String> getTestDta(){
 		return excelReader.getData("FormData","Data","FormTest");
 	
 	}

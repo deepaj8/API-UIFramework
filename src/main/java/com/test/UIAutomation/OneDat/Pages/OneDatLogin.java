@@ -39,6 +39,7 @@ public class OneDatLogin extends testBase{
 	}
 	
 	public void loginToApplication(HashMap<String, String> data) {
+		
 		username.clear();
 		log.info(data.get("UserName"));
 		log.info(data.get("Password"));

@@ -14,7 +14,7 @@ public class OneDat_TC1 extends testBase{
 	OneDatHome home;
 	 
 	@DataProvider(name="data")
-	public Object[][] getTestDta(){
+	public HashMap<String, String> getTestDta(){
 		return excelReader.getData("Login","Credentials","LoginTest");
 		
 	}

@@ -13,8 +13,8 @@ public class ExcelReader extends testBase {
 	
 	// Take input-filename,sheetname and testcase name and set path and make a connection to Fillo and call a method
 	// which extracts data from cell
-	public Object[][] getData(String fileName,String SheetName, String testcaseName) {
-		Object[][] data=null;
+	public HashMap<String, String> getData(String fileName,String SheetName, String testcaseName) {
+		HashMap<String, String> data=null;
 		
 		log.info("Excel File Name is---" + fileName);
 		 connection = GetCount.makeFilloConnection(fileName);
@@ -80,8 +80,8 @@ public class ExcelReader extends testBase {
 	}
 */
 	
-	public Object[][] getDataFromCell(String sheetName, String testcaseName) throws FilloException{
-		HashMap<String, String> map;		  
+	public HashMap<String, String> getDataFromCell(String sheetName, String testcaseName) throws FilloException{
+		HashMap<String, String> map = null;		  
 		
 		log.info("Sheet Name is---" + sheetName);
 		log.info("TestCase Name is---" + testcaseName);
@@ -107,7 +107,7 @@ public class ExcelReader extends testBase {
 
 		  recordset.close();
 		  connection.close();
-		  return data;
+		  return map;
 	
 	}
 	

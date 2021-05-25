@@ -34,7 +34,7 @@ public class OneDatHome extends testBase{
 	public void navigateToLoginPage() {
 		jsActions.scrollVisibilityOfElement(bookStoreAppLink);
 		customWait.waitForVisibilityOfElement(bookStoreAppLink, driver, 4);
-		bookStoreAppLink.click();
+		//bookStoreAppLink.click();
 		loginLink.click();
 	}
 	

@@ -84,7 +84,7 @@ public class OneDatForm extends testBase{
 		radioHandler.selectRadioButton(radioBtn, data.get("Gender"));
 		mobileNumber.sendKeys(data.get("Mobile"));
 		radioHandler.selectRadioButton(radioBtn, data.get("Hobbies"));
-		uploadPic.sendKeys(System.getProperty("user.dir") + "/src/main/java/com/test/automation/OneDat/ScreenShots/" + "OneDatPic.png");
+		uploadPic.sendKeys(System.getProperty("user.dir") + "/src/main/java/com/test/API_UIAutomation/OneDat/Reports/" + "OneDatPic.png");
 		currentAddr.sendKeys(data.get("Address"));
 		dob.click();
 	selectHandler.selByVisibleText(selectMonth, "April");

@@ -12,10 +12,13 @@ import org.testng.annotations.BeforeClass;
 import com.test.UIAutomation.OneDat.Utility.CommonFunctions;
 import com.test.UIAutomation.OneDat.Utility.VideoRecorder;
 
+import io.cucumber.java.Scenario;
+
+
 
 public class testBase extends CommonFunctions {
 
-
+/*
 	@BeforeClass
 	public void setUp() {
 		init();
@@ -34,13 +37,43 @@ public class testBase extends CommonFunctions {
 
 	@AfterMethod
 	public void AfterMethod(ITestResult result) throws Exception {
-		getResult(result);
+		//getResult(result);
 		// getScreenShot(result);
 	}
 
 	
 	@AfterClass(alwaysRun = true)
 	public void tearDown() throws Exception {
+		closeBrowser();
+		if (loadData("screenrecord").equalsIgnoreCase("yes")) {
+			VideoRecorder.stopRecord();
+		}
+
+	}
+	*/
+	/*************************CUCUMBER ANNOTATIONS************************/
+	
+	
+	public void setUp1() {
+		init();
+	}
+	
+
+	public void startTest1(Method method) {
+	//	test = extent.startTest(method.getName());
+	//	test.log(LogStatus.INFO, method.getName() + "--Test Started");
+
+	}
+	
+	
+	public void AfterMethod1(Scenario scenario) throws Exception {
+		getResult(scenario);
+		// getScreenShot(result);
+	}
+
+	
+	
+	public void tearDown1() throws Exception {
 		closeBrowser();
 		if (loadData("screenrecord").equalsIgnoreCase("yes")) {
 			VideoRecorder.stopRecord();

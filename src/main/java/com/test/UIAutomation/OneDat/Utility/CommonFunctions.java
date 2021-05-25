@@ -9,9 +9,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.OutputType;
@@ -36,6 +38,8 @@ import com.test.UIAutomation.OneDat.ExcelUtility.ExcelWriter;
 import com.test.UIAutomation.OneDat.ExcelUtility.GetCount;
 import com.test.UIAutomation.OneDat.PageObjectManager.PageObjectManager;
 
+import io.cucumber.java.Scenario;
+import io.cucumber.java.Status;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -131,17 +135,18 @@ public class CommonFunctions {
 	private void setDriver(WebDriver driver) {
 		this.driver = driver;
 		
-	}
-
+	}	
+	
+	
 /*****get URL, maximize it and add implicit wait*****/
-	/*public void getURL(String url)
+/*	public void getURL(String url)
 	{
 		getDriver().get(url);
 		log.info(url);
 		getDriver().manage().window().maximize();
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	}*/
-	
+	}
+	*/
 	public void getURL(String url) {
 		driver.get(url);
 		log.info(url);
@@ -179,30 +184,35 @@ public class CommonFunctions {
 
 
 /*****Get the result after executing the test*****/
-	public void getResult(ITestResult result) throws Exception {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-		//	test.log(LogStatus.PASS, result.getName() + "--Test is Passed");
-		} else if (result.getStatus() == ITestResult.FAILURE) {
-		//	test.log(LogStatus.FAIL, result.getName() + "--Test is Failed--" + result.getThrowable().getLocalizedMessage() + test.addScreenCapture(captureScreenShot(result)));
-		} else if (result.getStatus() == ITestResult.SKIP) {
-		//	test.log(LogStatus.SKIP, result.getName() + "--Test is Skipped and the Reason is--" + result.getThrowable());
+	public void getResult(Scenario scenario) throws Exception {
+		if ((scenario.getStatus().toString()).equals("PASSED")) {
+			log.info(scenario.getName()+" scenario is --- "+scenario.getStatus());
+		} else if ((scenario.getStatus().toString()).equals("FAILED")) {
+			scenario.attach(captureScreenShot(scenario), "image/png", scenario.getName());
+			log.info(scenario.getName()+" scenario is --- "+scenario.getStatus());
+		} else if ((scenario.getStatus().toString()).equals("SKIPPED")) {
+			log.info(scenario.getName()+" scenario is --- "+scenario.getStatus());
+		} else if ((scenario.getStatus().toString()).equals("PENDING")) {
+			log.info(scenario.getName()+" scenario is --- "+scenario.getStatus());
 		}
 	}
 	
 
 /*****Take Screenshot place it in Destination folder and return the path for failure tests*****/
-	public String captureScreenShot(ITestResult result) throws IOException {
+	public byte[] captureScreenShot(Scenario scenario) throws IOException {
 		File destfile = null;
-		if (result.getStatus() == ITestResult.FAILURE) {
+		byte[] fileContent = null;
+		if ((scenario.getStatus().toString()).equals("FAILED")) {
 			log.info("Inside captureScreenShot Utility");
 			File srcfile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-			String path = new File(System.getProperty("user.dir")).getAbsolutePath() + Constants.SCREENSHOT_PATH;
-			destfile = new File((String) path + result.getName() + "_" + format.format(cal.getTime()) + ".png");
-			FileHandler.copy(srcfile, destfile);
+			//String path = new File(System.getProperty("user.dir")).getAbsolutePath() + Constants.SCREENSHOT_PATH;
+			//destfile = new File((String) path + scenario.getName() + "_" + format.format(cal.getTime()) + ".png");
+			//FileUtils.copyFile(srcfile, destfile);
+			 fileContent=FileUtils.readFileToByteArray(srcfile);
 		}
 
-		return destfile.getAbsolutePath();
+		return fileContent;
 	}
 	
 
@@ -211,22 +221,22 @@ public class CommonFunctions {
 		log.info("Inside logInReport Utility");
 		log.info(data);
 		Reporter.log(data);
-	//	test.log(LogStatus.INFO, data);
+		logMessageInToResults(data);
 	}
 	
 
 /*****Takes Screenshot irrespective of result and place it in Destination folder and logs into the report*****/
-	public void getScreenShot(String testname) {
+	public void getScreenShot(String testname,Scenario scenario) {
 		File destfile = null;
-
 		log.info("Inside getScreenShot Utility");
 		File srcfile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try {
-			String path = new File(System.getProperty("user.dir")).getAbsolutePath() + Constants.SCREENSHOT_PATH;
-			destfile = new File((String) path + testname + "_" + format.format(cal.getTime()) + ".png");
-			FileHandler.copy(srcfile, destfile);
-		//	test.log(LogStatus.INFO, testname + test.addScreenCapture(destfile.getAbsolutePath()));
-
+			//String path = new File(System.getProperty("user.dir")).getAbsolutePath() + Constants.SCREENSHOT_PATH;
+			//destfile = new File((String) path + testname + "_" + format.format(cal.getTime()) + ".png");
+			//FileUtils.copyFile(srcfile, destfile);
+			byte[] fileContent=FileUtils.readFileToByteArray(srcfile);
+		    scenario.attach(fileContent, "image/png", testname);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -235,15 +245,16 @@ public class CommonFunctions {
 	}
 
 /*****To take a screen shot on the element eg on logo*****/
-	public void getScreenShotOnElement(WebElement el, String elementName) {
+	public void getScreenShotOnElement(WebElement el, String elementName,Scenario scenario) {
 		File destfile = null;
 		File srcfile = el.getScreenshotAs(OutputType.FILE);
 		try {
-			String path = new File(System.getProperty("user.dir")).getAbsolutePath() + Constants.SCREENSHOT_PATH;
-			destfile = new File((String) path + elementName + "_" + format.format(cal.getTime()) + ".png");
-			FileHandler.copy(srcfile, destfile);
-		//	test.log(LogStatus.INFO, elementName + test.addScreenCapture(destfile.getAbsolutePath()));
-
+			//String path = new File(System.getProperty("user.dir")).getAbsolutePath() + Constants.SCREENSHOT_PATH;
+			//destfile = new File((String) path + elementName + "_" + format.format(cal.getTime()) + ".png");
+			//FileUtils.copyFile(srcfile, destfile);
+			byte[] fileContent=FileUtils.readFileToByteArray(srcfile);
+		    scenario.attach(fileContent, "image/png", elementName);
+		    
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -378,6 +389,6 @@ public class CommonFunctions {
 	{
 		ExtentCucumberAdapter.addTestStepLog(message);	
 	}
-
+	
 	
 }

@@ -1,4 +1,4 @@
-Feature: validating AddBook api's with multiple data
+Feature: Validating AddBook API with multiple data
 
   Scenario Outline: Verify adding book api's using multiple AddBookApi
          Given Add book payload with "<sheetname>" <testcaseid>

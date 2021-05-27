@@ -1,4 +1,4 @@
-Feature: Validating Library Api's
+Feature: Validating Library API
 @bookApi
 Scenario:Verify adding book api's using AddBookApi
          Given Add book payload with "python" "klm" 236 "deepa"

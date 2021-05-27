@@ -1,10 +1,10 @@
-package com.test.API_UIAutomation.OneDat.RunnerClasses;
+package com.test.UIAutomation.OneDat.RunnerClass;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-		features="src/test/java/com/test/UIAutomation/OneDat/FeatureFiles/NavigateToPortal.feature",
+		features="src/test/java/com/test/UIAutomation/OneDat/FeatureFiles",
 	  	glue={"classpath:com/test/UIAutomation/OneDat/StepDefinitions"},
 		monochrome=true,
 	    dryRun=false,

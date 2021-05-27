@@ -1,6 +1,6 @@
-Feature: Navigating To The ToolsQA Application
+Feature: Navigating To The Home page of ToolsQA Application
 
-Scenario:Verify User is navigating to the portal
+Scenario:verify user is navigating to the portal
 Given User navigate to the ToolsQA application
 When User clicks on BookStore section
 Then User will able to the home page of portal

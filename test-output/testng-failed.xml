@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+  <listeners>
+    <listener class-name="com.test.UIAutomation.OneDat.Listener.AnnotationTransformer"/>
+  </listeners>
+  <test thread-count="5" name="NavigateToPortal(failed)">
     <classes>
-      <class name="com.test.APIAutomation.OneDat.RunnerClasses.TestRunner">
+      <class name="com.test.UIAutomation.OneDat.RunnerClass.TestRunner">
         <methods>
-          <include name="runScenario" invocation-numbers="0 1"/>
+          <include name="runScenario" invocation-numbers="0 1 1"/>
           <include name="tearDownClass"/>
           <include name="setUpClass"/>
         </methods>
-      </class> <!-- com.test.APIAutomation.OneDat.RunnerClasses.TestRunner -->
+      </class> <!-- com.test.UIAutomation.OneDat.RunnerClass.TestRunner -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- NavigateToPortal(failed) -->
 </suite> <!-- Failed suite [Suite] -->

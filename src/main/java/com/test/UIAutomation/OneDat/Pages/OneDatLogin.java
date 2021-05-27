@@ -44,8 +44,10 @@ public class OneDatLogin extends testBase{
 		log.info(data.get("UserName"));
 		log.info(data.get("Password"));
 		username.sendKeys(data.get("UserName"));
+		logMessageInToResults("Entered UserName is --"+data.get("UserName"));
 		password.clear();
 		password.sendKeys(data.get("Password"));
+		logMessageInToResults("Entered Password is --"+data.get("Password"));
 		loginBtn.click();
 		customWait.waitForVisibilityOfElement(logoutBtn, driver, 3);
 		//log.info("logged into the application");

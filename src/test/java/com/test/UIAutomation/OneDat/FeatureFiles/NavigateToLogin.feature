@@ -1,4 +1,4 @@
-Feature: Navigating To The ToolsQA Application
+Feature: Navigating To The Login section of ToolsQA Application
 
 Scenario:verify user is navigating to the portal and then login to the application
 Given User navigate to the ToolsQA application

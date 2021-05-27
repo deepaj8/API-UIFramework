@@ -1,4 +1,4 @@
-Feature: Validating Place Api's
+Feature: Validating Place API
 Scenario:Verify adding place api's using AddplaceApi
          Given Add place payload with "Greenhouse" "Hindi" "india"
          When user calls "AddPlaceApi" with "post" http request

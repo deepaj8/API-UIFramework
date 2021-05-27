@@ -1,4 +1,4 @@
-Feature: Navigating To The ToolsQA Application
+Feature: Navigating To The Form section of ToolsQA Application
 
 Scenario:verify user is navigating to the portal and then go to the form section
 Given User navigate to the ToolsQA application

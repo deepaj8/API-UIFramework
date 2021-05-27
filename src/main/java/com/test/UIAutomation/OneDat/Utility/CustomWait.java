@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.test.UIAutomation.OneDat.TestBase.testBase;
+import com.test.API_UIAutomation.OneDat.TestBase.testBase;
 
 public class CustomWait extends testBase {
 	public static WebDriverWait wait;

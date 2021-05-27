@@ -3,7 +3,7 @@ package com.test.UIAutomation.OneDat.Utility;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-import com.test.UIAutomation.OneDat.TestBase.testBase;
+import com.test.API_UIAutomation.OneDat.TestBase.testBase;
 
 public class JavaScriptActions extends testBase{
 	JavascriptExecutor js= (JavascriptExecutor)driver;

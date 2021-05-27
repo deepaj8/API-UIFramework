@@ -112,3 +112,36 @@
 2021-05-27 20:10:30 INFO  CommonFunctions:155 - https://demoqa.com/
 2021-05-27 20:10:30 INFO  CommonFunctions:192 - verify user is navigating to the portal scenario is --- PASSED
 2021-05-27 20:10:31 INFO  CommonFunctions:182 - All the browser instances are closed
+2021-05-27 20:24:12 INFO  WebDriverManager:606 - Using msedgedriver 90.0.818.66 (resolved driver for Edge 90)
+2021-05-27 20:24:12 INFO  WebDriverManager:662 - Exporting webdriver.edge.driver as C:\Users\Deepa.J\.cache\selenium\msedgedriver\win64\90.0.818.66\msedgedriver.exe
+2021-05-27 20:24:20 INFO  CommonFunctions:152 - https://demoqa.com/
+2021-05-27 20:24:21 INFO  CommonFunctions:19 - Excel File Name is---FormData
+2021-05-27 20:24:22 INFO  CommonFunctions:86 - Sheet Name is---Data
+2021-05-27 20:24:22 INFO  CommonFunctions:87 - TestCase Name is---FormTest
+2021-05-27 20:24:22 INFO  CommonFunctions:90 - Select * from Data where TestCase='FormTest' and Run='Y'
+2021-05-27 20:24:22 INFO  CommonFunctions:93 - Number Of Rows in a Data Sheet is---1
+2021-05-27 20:24:22 INFO  CommonFunctions:13 - Number of Radio Buttons 6
+2021-05-27 20:24:22 INFO  CommonFunctions:17 - Male
+2021-05-27 20:24:22 INFO  CommonFunctions:13 - Number of Radio Buttons 6
+2021-05-27 20:24:22 INFO  CommonFunctions:17 - Reading
+2021-05-27 20:24:23 INFO  CommonFunctions:13 - Number of Elements Found 42
+2021-05-27 20:24:23 INFO  CommonFunctions:17 - 3
+2021-05-27 20:24:24 INFO  CommonFunctions:189 - verify user is navigating to the portal and then go to the form section scenario is --- PASSED
+2021-05-27 20:24:25 INFO  CommonFunctions:179 - All the browser instances are closed
+2021-05-27 20:24:25 INFO  WebDriverManager:606 - Using msedgedriver 90.0.818.66 (resolved driver for Edge 90)
+2021-05-27 20:24:25 INFO  WebDriverManager:662 - Exporting webdriver.edge.driver as C:\Users\Deepa.J\.cache\selenium\msedgedriver\win64\90.0.818.66\msedgedriver.exe
+2021-05-27 20:24:29 INFO  CommonFunctions:152 - https://demoqa.com/
+2021-05-27 20:24:30 INFO  CommonFunctions:19 - Excel File Name is---Login
+2021-05-27 20:24:30 INFO  CommonFunctions:86 - Sheet Name is---Credentials
+2021-05-27 20:24:30 INFO  CommonFunctions:87 - TestCase Name is---LoginTest
+2021-05-27 20:24:30 INFO  CommonFunctions:90 - Select * from Credentials where TestCase='LoginTest' and Run='Y'
+2021-05-27 20:24:30 INFO  CommonFunctions:93 - Number Of Rows in a Credentials Sheet is---2
+2021-05-27 20:24:30 INFO  CommonFunctions:44 - deepajtesting
+2021-05-27 20:24:30 INFO  CommonFunctions:45 - Welcome1!
+2021-05-27 20:24:31 INFO  CommonFunctions:189 - verify user is navigating to the portal and then login to the application scenario is --- PASSED
+2021-05-27 20:24:32 INFO  CommonFunctions:179 - All the browser instances are closed
+2021-05-27 20:24:32 INFO  WebDriverManager:606 - Using msedgedriver 90.0.818.66 (resolved driver for Edge 90)
+2021-05-27 20:24:32 INFO  WebDriverManager:662 - Exporting webdriver.edge.driver as C:\Users\Deepa.J\.cache\selenium\msedgedriver\win64\90.0.818.66\msedgedriver.exe
+2021-05-27 20:24:36 INFO  CommonFunctions:152 - https://demoqa.com/
+2021-05-27 20:24:37 INFO  CommonFunctions:189 - verify user is navigating to the portal scenario is --- PASSED
+2021-05-27 20:24:38 INFO  CommonFunctions:179 - All the browser instances are closed

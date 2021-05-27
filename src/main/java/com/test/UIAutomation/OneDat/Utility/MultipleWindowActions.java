@@ -9,7 +9,7 @@ import java.util.Set;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 
-import com.test.UIAutomation.OneDat.TestBase.testBase;
+import com.test.API_UIAutomation.OneDat.TestBase.testBase;
 
 public class MultipleWindowActions extends testBase {
 

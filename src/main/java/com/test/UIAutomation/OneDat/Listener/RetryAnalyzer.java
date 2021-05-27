@@ -4,7 +4,7 @@ package com.test.UIAutomation.OneDat.Listener;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-import com.test.UIAutomation.OneDat.TestBase.testBase;
+import com.test.API_UIAutomation.OneDat.TestBase.testBase;
 
 
 public class RetryAnalyzer extends testBase implements IRetryAnalyzer{

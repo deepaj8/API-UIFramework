@@ -12,7 +12,7 @@ public class Constants extends CommonFunctions{
 	public static final String REPORTS_PATH="./src/main/java/com/test/API_UIAutomation/OneDat/Reports/AutomationTest-";
 	public static final String SCREENSHOT_PATH="/src/main/java/com/test/UIAutomation/OneDat/ScreenShots/";
 	public static final String VIDEO_PATH="./src/main/java/com/test/UIAutomation/OneDat/Videos/";
-    public static final String TESTDATA_PATH="./src/main/java/com/test/UIAutomation/OneDat/TestData/";
+    public static final String TESTDATA_PATH="./src/main/java/com/test/API_UIAutomation/OneDat/TestData/";
 	public static final int TIME_OUT=4;
     public static final String DownloadDir="E:\\Downloads";
 }

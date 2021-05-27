@@ -2,7 +2,7 @@ package com.test.UIAutomation.OneDat.Utility;
 
 
 
-import com.test.UIAutomation.OneDat.TestBase.testBase;
+import com.test.API_UIAutomation.OneDat.TestBase.testBase;
 
 public class AlertActions extends testBase {
 

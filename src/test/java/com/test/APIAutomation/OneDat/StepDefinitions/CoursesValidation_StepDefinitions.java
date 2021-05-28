@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.IOException;
 
 import com.test.APIAutomation.OneDat.Pojo.GetCourse;
+import com.test.API_UIAutomation.OneDat.TestBase.testBase;
 import com.test.UIAutomation.OneDat.Utility.CommonFunctions;
 
 import io.cucumber.java.en.Given;
@@ -14,7 +15,7 @@ import io.restassured.parsing.Parser;
 import io.restassured.specification.RequestSpecification;
 import static io.restassured.RestAssured.given;
 
-public class CoursesValidation_StepDefinitions extends CommonFunctions {
+public class CoursesValidation_StepDefinitions extends testBase {
 	RequestSpecification res;
 	GetCourse gc;
 	

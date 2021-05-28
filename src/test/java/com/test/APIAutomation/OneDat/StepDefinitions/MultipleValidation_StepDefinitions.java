@@ -14,9 +14,10 @@ import java.util.HashMap;
 import com.codoid.products.exception.FilloException;
 import com.test.APIAutomation.OneDat.Resources.TestBuild;
 import com.test.API_UIAutomation.OneDat.ExcelUtility.ExcelReader;
+import com.test.API_UIAutomation.OneDat.TestBase.testBase;
 import com.test.UIAutomation.OneDat.Utility.CommonFunctions;
 
-public class MultipleValidation_StepDefinitions extends CommonFunctions {
+public class MultipleValidation_StepDefinitions extends testBase {
 	
 	RequestSpecification res;
 	TestBuild data=new TestBuild();

@@ -6,8 +6,6 @@ import java.io.IOException;
 
 import com.test.APIAutomation.OneDat.Pojo.GetCourse;
 import com.test.API_UIAutomation.OneDat.TestBase.testBase;
-import com.test.UIAutomation.OneDat.Utility.CommonFunctions;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

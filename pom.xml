@@ -34,7 +34,7 @@
    <!-- for generating advanced reports for failed tests below tag has to set true -->
          <testFailureIgnore>true</testFailureIgnore>
          <suiteXmlFiles>
-         <suiteXmlFile>testngapi.xml</suiteXmlFile>
+         <suiteXmlFile>testngAPI.xml</suiteXmlFile>
          </suiteXmlFiles>
          </configuration>
        </plugin> 
@@ -46,7 +46,7 @@
   </profile>
   <!-- For triggering Smoke tests -->
   <profile>
-  <id>Smoke</id>
+  <id>UI</id>
    <build>
    <pluginManagement>
  <plugins>
@@ -69,7 +69,7 @@
    <!-- for generating advanced reports for failed tests below tag has to set true -->
          <testFailureIgnore>true</testFailureIgnore>
          <suiteXmlFiles>
-         <suiteXmlFile>testngsmoke.xml</suiteXmlFile>
+         <suiteXmlFile>testngUI.xml</suiteXmlFile>
          </suiteXmlFiles>
          </configuration>
        </plugin> 

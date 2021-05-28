@@ -10,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Base64;
 import java.util.Calendar;
 import java.util.Properties;
 
@@ -25,8 +24,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.io.FileHandler;
-import org.testng.ITestResult;
 import org.testng.Reporter;
 
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
@@ -36,9 +33,7 @@ import com.test.API_UIAutomation.OneDat.ExcelUtility.ExcelReader;
 import com.test.API_UIAutomation.OneDat.ExcelUtility.ExcelWriter;
 import com.test.API_UIAutomation.OneDat.ExcelUtility.GetCount;
 import com.test.UIAutomation.OneDat.PageObjectManager.PageObjectManager;
-
 import io.cucumber.java.Scenario;
-import io.cucumber.java.Status;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;

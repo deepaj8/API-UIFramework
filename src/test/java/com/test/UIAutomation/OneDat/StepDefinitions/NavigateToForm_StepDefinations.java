@@ -7,12 +7,6 @@ import org.testng.Assert;
 import com.test.API_UIAutomation.OneDat.TestBase.testBase;
 import com.test.UIAutomation.OneDat.Pages.OneDatForm;
 import com.test.UIAutomation.OneDat.Pages.OneDatHome;
-import com.test.UIAutomation.OneDat.Pages.OneDatPortal;
-import com.test.UIAutomation.OneDat.Utility.CommonFunctions;
-
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
